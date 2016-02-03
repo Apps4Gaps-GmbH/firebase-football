@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        setRootViewController()
+        
         return true
     }
 
@@ -41,6 +43,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    internal func setRootViewController() {
+        // Check if user logged in
+        if NSUserDefaults.standardUserDefaults().boolForKey("loggedIn") {
+
+            setMainAsRootViewController()
+        } else {
+            setInitialAsRootViewController()
+        }
+    }
+    
+    func setInitialAsRootViewController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let initialViewController = storyboard.instantiateViewControllerWithIdentifier("InitialViewController") as? InitialViewController {
+            window?.rootViewController = initialViewController
+        }
+    }
+    
+    func setMainAsRootViewController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let mainViewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController") as? ViewController {
+            window?.rootViewController = mainViewController
+        }
+    }
 
 }
 
