@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setInitialAsRootViewController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let initialViewController = storyboard.instantiateViewControllerWithIdentifier("InitialViewController") as? InitialViewController {
+        if let initialViewController = storyboard.instantiateViewControllerWithIdentifier("InitialNavigationController") as? UINavigationController {
             window?.rootViewController = initialViewController
         }
     }

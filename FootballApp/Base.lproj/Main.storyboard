@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -41,10 +41,10 @@
                                 <exclude reference="GXr-Ss-Zy9"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="leP-mc-MlL"/>
+                                <exclude reference="Cc9-mw-5SN"/>
                                 <exclude reference="4fQ-Eo-iUn"/>
                                 <exclude reference="nGW-hl-wio"/>
-                                <exclude reference="Cc9-mw-5SN"/>
-                                <exclude reference="leP-mc-MlL"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -53,10 +53,10 @@
                                 <include reference="GXr-Ss-Zy9"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="leP-mc-MlL"/>
+                                <include reference="Cc9-mw-5SN"/>
                                 <include reference="4fQ-Eo-iUn"/>
                                 <include reference="nGW-hl-wio"/>
-                                <include reference="Cc9-mw-5SN"/>
-                                <include reference="leP-mc-MlL"/>
                             </mask>
                         </variation>
                     </view>
@@ -84,18 +84,12 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
-                                            <rect key="frame" x="53" y="0.0" width="131" height="22"/>
-                                        </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="An App to learn to use firebase" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rkE-F6-IzY">
                                         <rect key="frame" x="131" y="0.0" width="236" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
-                                            <rect key="frame" x="1" y="22" width="236" height="21"/>
-                                        </variation>
                                     </label>
                                 </subviews>
                                 <constraints>
@@ -206,10 +200,11 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="sBh-oX-HbA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tAu-cx-XmA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="885" y="1468.5"/>
+            <point key="canvasLocation" x="1803" y="1468.5"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="f0e-CP-RkQ">
@@ -269,7 +264,7 @@
                                 </variation>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="7iW-QW-JNi">
-                                <rect key="frame" x="60" y="134" width="161" height="30"/>
+                                <rect key="frame" x="60" y="134" width="162" height="30"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="02W-qY-bTb">
                                         <rect key="frame" x="0.0" y="0.0" width="56" height="30"/>
@@ -336,7 +331,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jvx-4d-y8h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1813.5" y="1172.25"/>
+            <point key="canvasLocation" x="2731.5" y="1172.25"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="0bN-Fn-Jx8">
@@ -380,28 +375,6 @@
                                     </mask>
                                 </variation>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVJ-em-ZgJ">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="42" id="kBG-fD-Ou3"/>
-                                    <constraint firstAttribute="height" constant="21" id="mpo-m8-TQ6"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="kBG-fD-Ou3"/>
-                                        <exclude reference="mpo-m8-TQ6"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="kBG-fD-Ou3"/>
-                                        <include reference="mpo-m8-TQ6"/>
-                                    </mask>
-                                </variation>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mIG-h4-UJc">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -425,12 +398,40 @@
                                     </mask>
                                 </variation>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVJ-em-ZgJ">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="kBG-fD-Ou3">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="61"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="21" id="mpo-m8-TQ6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="kBG-fD-Ou3"/>
+                                        <exclude reference="mpo-m8-TQ6"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="kBG-fD-Ou3"/>
+                                        <include reference="mpo-m8-TQ6"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="SVJ-em-ZgJ" firstAttribute="centerX" secondItem="uzf-Hd-Qcv" secondAttribute="centerX" id="2au-YM-NQL"/>
-                            <constraint firstItem="SVJ-em-ZgJ" firstAttribute="top" secondItem="g0v-f7-bMj" secondAttribute="bottom" constant="48" id="Dxw-43-C7b"/>
-                            <constraint firstItem="BCT-Nc-QIK" firstAttribute="top" secondItem="SVJ-em-ZgJ" secondAttribute="bottom" constant="69" id="RU4-8q-UTa"/>
+                            <constraint firstItem="SVJ-em-ZgJ" firstAttribute="top" secondItem="g0v-f7-bMj" secondAttribute="bottom" constant="48" id="Dxw-43-C7b">
+                                <variation key="heightClass=regular-widthClass=compact" constant="8"/>
+                            </constraint>
+                            <constraint firstItem="BCT-Nc-QIK" firstAttribute="top" secondItem="SVJ-em-ZgJ" secondAttribute="bottom" constant="69" id="RU4-8q-UTa">
+                                <variation key="heightClass=regular-widthClass=compact" constant="65"/>
+                            </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="BCT-Nc-QIK" secondAttribute="trailing" constant="62" id="ZUQ-ct-qjZ"/>
                             <constraint firstItem="mIG-h4-UJc" firstAttribute="top" secondItem="BCT-Nc-QIK" secondAttribute="bottom" constant="85" id="a1Z-I9-uAG"/>
                             <constraint firstItem="BCT-Nc-QIK" firstAttribute="leading" secondItem="uzf-Hd-Qcv" secondAttribute="leadingMargin" constant="62" id="tBD-dz-erg"/>
@@ -439,8 +440,8 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="BCT-Nc-QIK"/>
-                                <exclude reference="SVJ-em-ZgJ"/>
                                 <exclude reference="mIG-h4-UJc"/>
+                                <exclude reference="SVJ-em-ZgJ"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="a1Z-I9-uAG"/>
@@ -455,8 +456,8 @@
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="BCT-Nc-QIK"/>
-                                <include reference="SVJ-em-ZgJ"/>
                                 <include reference="mIG-h4-UJc"/>
+                                <include reference="SVJ-em-ZgJ"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="a1Z-I9-uAG"/>
@@ -472,7 +473,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6RW-H5-TQp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1813.5" y="1863"/>
+            <point key="canvasLocation" x="2731.5" y="1863"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="tN8-pc-sVW">
+            <objects>
+                <navigationController storyboardIdentifier="InitialNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="ihZ-dB-iXP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VQx-w6-Lk7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Qk1-9d-598" kind="relationship" relationship="rootViewController" id="uaQ-hK-thD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vPu-Yo-n7Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="885" y="1468.5"/>
         </scene>
     </scenes>
 </document>
