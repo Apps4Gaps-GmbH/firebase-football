@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ADEC3BF2B35B34D736BF8E11 /* Pods_FootballApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D05A86947E84E38B9507AAAC /* Pods_FootballApp.framework */; };
 		F16AB0C51C62358700D5D7E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16AB0C41C62358700D5D7E6 /* AppDelegate.swift */; };
 		F16AB0C71C62358700D5D7E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16AB0C61C62358700D5D7E6 /* ViewController.swift */; };
 		F16AB0CA1C62358700D5D7E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F16AB0C81C62358700D5D7E6 /* Main.storyboard */; };
@@ -20,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0345BBA62458A57E591637F9 /* Pods-FootballApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FootballApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FootballApp/Pods-FootballApp.debug.xcconfig"; sourceTree = "<group>"; };
+		7AB588C7C443D90649977D52 /* Pods-FootballApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FootballApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FootballApp/Pods-FootballApp.release.xcconfig"; sourceTree = "<group>"; };
+		D05A86947E84E38B9507AAAC /* Pods_FootballApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FootballApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16AB0C11C62358700D5D7E6 /* FootballApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FootballApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16AB0C41C62358700D5D7E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F16AB0C61C62358700D5D7E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -41,17 +45,29 @@
 			files = (
 				F16AB0E41C6353A600D5D7E6 /* FBSDKLoginKit.framework in Frameworks */,
 				F16AB0E31C6353A600D5D7E6 /* FBSDKCoreKit.framework in Frameworks */,
+				ADEC3BF2B35B34D736BF8E11 /* Pods_FootballApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F873E78172681F8999644F7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0345BBA62458A57E591637F9 /* Pods-FootballApp.debug.xcconfig */,
+				7AB588C7C443D90649977D52 /* Pods-FootballApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F16AB0B81C62358700D5D7E6 = {
 			isa = PBXGroup;
 			children = (
 				F16AB0C31C62358700D5D7E6 /* FootballApp */,
 				F16AB0C21C62358700D5D7E6 /* Products */,
+				5F873E78172681F8999644F7 /* Pods */,
+				F53251F561BE1699B25E096F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +105,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F53251F561BE1699B25E096F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D05A86947E84E38B9507AAAC /* Pods_FootballApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -96,9 +120,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F16AB0D31C62358700D5D7E6 /* Build configuration list for PBXNativeTarget "FootballApp" */;
 			buildPhases = (
+				CC5F116EA772CD7B920BE9C0 /* Check Pods Manifest.lock */,
 				F16AB0BD1C62358700D5D7E6 /* Sources */,
 				F16AB0BE1C62358700D5D7E6 /* Frameworks */,
 				F16AB0BF1C62358700D5D7E6 /* Resources */,
+				80D1AE3F5EF15EF86382AF70 /* Embed Pods Frameworks */,
+				A3016EFBA5505A454C18A797 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -154,6 +181,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		80D1AE3F5EF15EF86382AF70 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FootballApp/Pods-FootballApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3016EFBA5505A454C18A797 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FootballApp/Pods-FootballApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC5F116EA772CD7B920BE9C0 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F16AB0BD1C62358700D5D7E6 /* Sources */ = {
@@ -273,6 +348,7 @@
 		};
 		F16AB0D41C62358700D5D7E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0345BBA62458A57E591637F9 /* Pods-FootballApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/FootballApp";
@@ -285,6 +361,7 @@
 		};
 		F16AB0D51C62358700D5D7E6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AB588C7C443D90649977D52 /* Pods-FootballApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/FootballApp";
