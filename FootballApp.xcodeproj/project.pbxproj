@@ -15,6 +15,8 @@
 		F16AB0D71C6244C700D5D7E6 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16AB0D61C6244C700D5D7E6 /* InitialViewController.swift */; };
 		F16AB0D91C62493B00D5D7E6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16AB0D81C62493B00D5D7E6 /* LoginViewController.swift */; };
 		F16AB0DB1C62494B00D5D7E6 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16AB0DA1C62494B00D5D7E6 /* RegisterViewController.swift */; };
+		F16AB0E31C6353A600D5D7E6 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F16AB0E11C6353A600D5D7E6 /* FBSDKCoreKit.framework */; };
+		F16AB0E41C6353A600D5D7E6 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F16AB0E21C6353A600D5D7E6 /* FBSDKLoginKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		F16AB0D61C6244C700D5D7E6 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		F16AB0D81C62493B00D5D7E6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F16AB0DA1C62494B00D5D7E6 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		F16AB0E11C6353A600D5D7E6 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		F16AB0E21C6353A600D5D7E6 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +39,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F16AB0E41C6353A600D5D7E6 /* FBSDKLoginKit.framework in Frameworks */,
+				F16AB0E31C6353A600D5D7E6 /* FBSDKCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +66,7 @@
 		F16AB0C31C62358700D5D7E6 /* FootballApp */ = {
 			isa = PBXGroup;
 			children = (
+				F16AB0E01C63538C00D5D7E6 /* Frameworks */,
 				F16AB0C41C62358700D5D7E6 /* AppDelegate.swift */,
 				F16AB0C61C62358700D5D7E6 /* ViewController.swift */,
 				F16AB0D61C6244C700D5D7E6 /* InitialViewController.swift */,
@@ -71,6 +78,15 @@
 				F16AB0D01C62358700D5D7E6 /* Info.plist */,
 			);
 			path = FootballApp;
+			sourceTree = "<group>";
+		};
+		F16AB0E01C63538C00D5D7E6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F16AB0E11C6353A600D5D7E6 /* FBSDKCoreKit.framework */,
+				F16AB0E21C6353A600D5D7E6 /* FBSDKLoginKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +275,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/FootballApp";
 				INFOPLIST_FILE = FootballApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apps4gaps.FootballApp;
@@ -270,6 +287,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/FootballApp";
 				INFOPLIST_FILE = FootballApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apps4gaps.FootballApp;
@@ -296,6 +314,7 @@
 				F16AB0D51C62358700D5D7E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
