@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import MBProgressHUD
 
 class RegisterViewController: UIViewController, UITextFieldDelegate {
 
@@ -25,6 +26,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func signUpTapped(sender: AnyObject) {
         if emailTextField.text != "" && passwordTextField.text != "" && confirmTextField.text != "" && passwordTextField.text == confirmTextField.text {
+            
+            let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            hud.mode = .Indeterminate
+            hud.labelText = "Loading"
+            
             let ref = Firebase(url: "https://resplendent-torch-3135.firebaseio.com")
             ref.createUser(emailTextField.text, password: passwordTextField.text,
                 withValueCompletionBlock: { error, result in
@@ -45,7 +51,13 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                                     usersRef.setValue(self.user.toAnyObject())
                                     
                                     let alert = UIAlertController(title: "Success", message: "Successfully registered user", preferredStyle: UIAlertControllerStyle.Alert)
+                                    let destroyAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Destructive, handler: { (action) -> Void in
+                                        
+                                    })
+                                    alert.addAction(destroyAction)
                                     self.presentViewController(alert, animated: true, completion: nil)
+                                    
+                                    hud.hide(true)
                                 }
                         })
                     }
