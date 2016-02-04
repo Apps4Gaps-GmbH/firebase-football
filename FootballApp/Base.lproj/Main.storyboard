@@ -441,6 +441,9 @@
                                         <include reference="jCc-E5-pTL"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="signUpTapped:" destination="hNu-XK-kT6" eventType="touchUpInside" id="AXM-Xh-7OR"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVJ-em-ZgJ">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -534,6 +537,11 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="confirmTextField" destination="hkb-Lq-2lf" id="Zb4-dV-VFE"/>
+                        <outlet property="emailTextField" destination="tmj-hc-yfj" id="Mgt-rP-5wK"/>
+                        <outlet property="passwordTextField" destination="QKf-jb-fjR" id="VPX-sQ-Kax"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6RW-H5-TQp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
