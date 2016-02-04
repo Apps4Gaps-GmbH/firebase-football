@@ -51,9 +51,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                                     usersRef.setValue(self.user.toAnyObject())
                                     
                                     let alert = UIAlertController(title: "Success", message: "Successfully registered user", preferredStyle: UIAlertControllerStyle.Alert)
-                                    let destroyAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Destructive, handler: { (action) -> Void in
-                                        
-                                    })
+                                    let destroyAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Destructive, handler: { (action) -> Void in })
                                     alert.addAction(destroyAction)
                                     self.presentViewController(alert, animated: true, completion: nil)
                                     
@@ -64,6 +62,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             })
         } else {
             let alert = UIAlertController(title: "Error", message: "Fill in the fields and/or check your passwords", preferredStyle: UIAlertControllerStyle.Alert)
+            let destroyAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Destructive, handler: { (action) -> Void in })
+            alert.addAction(destroyAction)
             presentViewController(alert, animated: true, completion: nil)
         }
     }

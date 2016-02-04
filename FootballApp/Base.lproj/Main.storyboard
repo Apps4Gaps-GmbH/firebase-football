@@ -330,6 +330,9 @@
                                         <include reference="B9l-84-C2S"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="loginButtonTapped:" destination="72M-yv-4nV" eventType="touchUpInside" id="KMF-HQ-5Qe"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="7iW-QW-JNi">
                                 <rect key="frame" x="60" y="134" width="162" height="30"/>
@@ -402,6 +405,10 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="02W-qY-bTb" id="NN5-RU-n4G"/>
+                        <outlet property="passwordTextField" destination="4Xr-NO-Kec" id="kYF-id-hS2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jvx-4d-y8h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

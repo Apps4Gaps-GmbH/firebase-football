@@ -9,9 +9,13 @@
 import UIKit
 import FBSDKLoginKit
 import Firebase
+import MBProgressHUD
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +26,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         fbLoginButton.delegate = self
         self.view.addSubview(fbLoginButton)
     }
+    
+    // MARK: - FBSDKLoginButtonDelegate
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         let ref = Firebase(url: "https://resplendent-torch-3135.firebaseio.com")
@@ -47,7 +53,51 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         
     }
+    
+    // MARK: - User Interaction
 
+    @IBAction func loginButtonTapped(sender: AnyObject) {
+        if emailTextField.text != "" && passwordTextField.text != "" {
+            
+            let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            hud.mode = .Indeterminate
+            hud.labelText = "Loading"
+            
+            let ref = Firebase(url: "https://resplendent-torch-3135.firebaseio.com/users")
+            
+            ref.authUser(emailTextField.text, password: passwordTextField.text, withCompletionBlock: { (error, authData) -> Void in
+                hud.hide(true)
+                
+                if error != nil {
+                    let alert = UIAlertController(title: "Error", message: "Invalid credentials", preferredStyle: UIAlertControllerStyle.Alert)
+                    let destroyAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Destructive, handler: { (action) -> Void in })
+                    alert.addAction(destroyAction)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                } else {
+//                    NSUserDefaults.standardUserDefaults().setBool(true, forKey: "loggedIn")
+                    NSUserDefaults.standardUserDefaults().setObject(authData.uid, forKey: "uid")
+                    
+                    let alert = UIAlertController(title: "Success", message: "Successful login", preferredStyle: UIAlertControllerStyle.Alert)
+                    let destroyAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Destructive, handler: { (action) -> Void in })
+                    alert.addAction(destroyAction)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                    
+                    let userRef = Firebase(url: "https://resplendent-torch-3135.firebaseio.com/users/\(authData.uid)")
+                    
+                    userRef.observeEventType(.Value, withBlock: { (snapshot) -> Void in
+//                        if snapshot.value.objectForKey("favourite_team") as! String != "" {
+//                            // to team list
+//                        } else {
+//                            // to team selection
+//                        }
+                        
+                        print(snapshot.value.objectForKey("favourite_team") as! String)
+                    })
+                }
+            })
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
