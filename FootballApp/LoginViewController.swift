@@ -10,7 +10,7 @@ import UIKit
 import FBSDKLoginKit
 import Firebase
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,28 +18,34 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
         let fbLoginButton = FBSDKLoginButton()
         fbLoginButton.center = CGPoint(x: self.view.center.x, y: self.view.bounds.height - fbLoginButton.bounds.height - 50)
+        fbLoginButton.readPermissions = ["email"]
+        fbLoginButton.delegate = self
         self.view.addSubview(fbLoginButton)
+    }
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        let ref = Firebase(url: "https://resplendent-torch-3135.firebaseio.com")
         
-        let ref = Firebase(url: "https://<YOUR-FIREBASE-APP>.firebaseio.com")
-        let facebookLogin = FBSDKLoginManager()
-        
-        facebookLogin.logInWithReadPermissions(["email"], fromViewController: self) { (facebookResult, facebookError) -> Void in
-            if facebookError != nil {
-                print("Facebook login failed. Error \(facebookError)")
-            } else if facebookResult.isCancelled {
-                print("Facebook login was cancelled.")
-            } else {
-                let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
-                ref.authWithOAuthProvider("facebook", token: accessToken,
-                    withCompletionBlock: { error, authData in
-                        if error != nil {
-                            print("Login failed. \(error)")
-                        } else {
-                            print("Logged in! \(authData)")
-                        }
-                })
-            }
+        if error != nil {
+            print("Facebook login failed. Error \(error)")
+        } else if result.isCancelled {
+            print("Facebook login was cancelled.")
+        } else {
+            let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
+            ref.authWithOAuthProvider("facebook", token: accessToken,
+                withCompletionBlock: { error, authData in
+                    if error != nil {
+                        print("Login failed. \(error)")
+                    } else {
+                        print("Logged in! \(authData)")
+                        AppDelegate.sharedDelegate().setMainAsRootViewController()
+                    }
+            })
         }
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        
     }
 
     override func didReceiveMemoryWarning() {
