@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -124,7 +124,7 @@
                     </view>
                     <connections>
                         <outlet property="invisibleLayer" destination="SQJ-GL-MAA" id="gbI-sT-IPf"/>
-                        <segue destination="Uzn-lo-3A7" kind="presentation" identifier="fromWelcomeToCountries" modalTransitionStyle="crossDissolve" id="Hks-lW-rP2"/>
+                        <segue destination="B8X-lm-uTw" kind="presentation" identifier="fromWelcomeToCountries" modalTransitionStyle="crossDissolve" id="4mk-nM-PXS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -281,17 +281,17 @@
                         <outlet property="germanyButton" destination="h8h-Mf-dV8" id="peq-Pp-1bK"/>
                         <outlet property="italyButton" destination="E3r-Nr-TvF" id="axJ-9j-PT2"/>
                         <outlet property="turkeyButton" destination="CTj-ay-U0X" id="aho-xs-8HJ"/>
-                        <segue destination="mrC-EJ-uZR" kind="show" identifier="fromCountriesToTeams" id="TEP-ej-ak3"/>
+                        <segue destination="mrC-EJ-uZR" kind="presentation" identifier="fromCountriesToTeams" id="TEP-ej-ak3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LZl-AI-VFB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3202.5" y="274.5"/>
+            <point key="canvasLocation" x="2401.5" y="274.5"/>
         </scene>
-        <!--Teams Table View Controller-->
+        <!--Title-->
         <scene sceneID="9Qf-uw-7c9">
             <objects>
-                <tableViewController id="mrC-EJ-uZR" customClass="TeamsTableViewController" customModule="FootballApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TeamsTableViewController" id="mrC-EJ-uZR" customClass="TeamsTableViewController" customModule="FootballApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="w0o-vt-4N6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -361,13 +361,24 @@
                                         </mask>
                                     </variation>
                                 </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fqu-LU-tmi">
+                                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                    <state key="normal" title="Back"/>
+                                    <connections>
+                                        <action selector="goToCountries:" destination="mrC-EJ-uZR" eventType="touchUpInside" id="uq3-ka-ycN"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="feU-VM-8qr" firstAttribute="centerX" secondItem="PUL-6m-FlD" secondAttribute="centerX" id="2AY-CI-AWf"/>
                                 <constraint firstItem="PUL-6m-FlD" firstAttribute="centerX" secondItem="dZr-s9-W9i" secondAttribute="centerX" id="9R5-bb-TBK"/>
                                 <constraint firstItem="0bd-l3-MOj" firstAttribute="top" secondItem="feU-VM-8qr" secondAttribute="bottom" constant="33" id="HxJ-zK-aiK"/>
+                                <constraint firstItem="Fqu-LU-tmi" firstAttribute="top" secondItem="dZr-s9-W9i" secondAttribute="top" constant="8" id="Hye-Ir-naG">
+                                    <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                                </constraint>
                                 <constraint firstAttribute="bottom" secondItem="Qa6-gb-fac" secondAttribute="bottom" id="LPi-xy-npd"/>
                                 <constraint firstItem="yvq-Pg-Zrj" firstAttribute="leading" secondItem="dZr-s9-W9i" secondAttribute="leading" constant="22" id="SgK-8B-DuV"/>
+                                <constraint firstItem="Fqu-LU-tmi" firstAttribute="leading" secondItem="dZr-s9-W9i" secondAttribute="leading" constant="8" id="ZSN-WU-AHI"/>
                                 <constraint firstItem="yvq-Pg-Zrj" firstAttribute="top" secondItem="feU-VM-8qr" secondAttribute="bottom" constant="53" id="bXb-OE-dAi"/>
                                 <constraint firstAttribute="trailing" secondItem="0bd-l3-MOj" secondAttribute="trailing" constant="8" id="bn7-cF-SgD"/>
                                 <constraint firstItem="feU-VM-8qr" firstAttribute="top" secondItem="PUL-6m-FlD" secondAttribute="bottom" constant="8" id="eME-at-Abj"/>
@@ -385,20 +396,23 @@
                                     <exclude reference="yvq-Pg-Zrj"/>
                                     <exclude reference="0bd-l3-MOj"/>
                                     <exclude reference="Qa6-gb-fac"/>
+                                    <exclude reference="Fqu-LU-tmi"/>
                                 </mask>
                                 <mask key="constraints">
-                                    <exclude reference="HxJ-zK-aiK"/>
-                                    <exclude reference="bn7-cF-SgD"/>
-                                    <exclude reference="swW-aQ-Cfl"/>
+                                    <exclude reference="Hye-Ir-naG"/>
+                                    <exclude reference="ZSN-WU-AHI"/>
                                     <exclude reference="9R5-bb-TBK"/>
                                     <exclude reference="iS3-vF-YeM"/>
                                     <exclude reference="2AY-CI-AWf"/>
                                     <exclude reference="eME-at-Abj"/>
-                                    <exclude reference="SgK-8B-DuV"/>
-                                    <exclude reference="bXb-OE-dAi"/>
                                     <exclude reference="LPi-xy-npd"/>
                                     <exclude reference="mpp-lT-7w0"/>
                                     <exclude reference="qYa-1B-TML"/>
+                                    <exclude reference="SgK-8B-DuV"/>
+                                    <exclude reference="bXb-OE-dAi"/>
+                                    <exclude reference="HxJ-zK-aiK"/>
+                                    <exclude reference="bn7-cF-SgD"/>
+                                    <exclude reference="swW-aQ-Cfl"/>
                                 </mask>
                             </variation>
                             <variation key="heightClass=regular-widthClass=compact">
@@ -408,20 +422,23 @@
                                     <include reference="yvq-Pg-Zrj"/>
                                     <include reference="0bd-l3-MOj"/>
                                     <include reference="Qa6-gb-fac"/>
+                                    <include reference="Fqu-LU-tmi"/>
                                 </mask>
                                 <mask key="constraints">
-                                    <include reference="HxJ-zK-aiK"/>
-                                    <include reference="bn7-cF-SgD"/>
-                                    <exclude reference="swW-aQ-Cfl"/>
+                                    <include reference="Hye-Ir-naG"/>
+                                    <include reference="ZSN-WU-AHI"/>
                                     <include reference="9R5-bb-TBK"/>
                                     <include reference="iS3-vF-YeM"/>
                                     <include reference="2AY-CI-AWf"/>
                                     <include reference="eME-at-Abj"/>
-                                    <include reference="SgK-8B-DuV"/>
-                                    <include reference="bXb-OE-dAi"/>
                                     <include reference="LPi-xy-npd"/>
                                     <include reference="mpp-lT-7w0"/>
                                     <include reference="qYa-1B-TML"/>
+                                    <include reference="SgK-8B-DuV"/>
+                                    <include reference="bXb-OE-dAi"/>
+                                    <include reference="HxJ-zK-aiK"/>
+                                    <include reference="bn7-cF-SgD"/>
+                                    <exclude reference="swW-aQ-Cfl"/>
                                 </mask>
                             </variation>
                         </view>
@@ -552,10 +569,15 @@
                             <outlet property="delegate" destination="mrC-EJ-uZR" id="uJf-Be-hhm"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="e9j-hA-UVe"/>
+                    <connections>
+                        <outlet property="hearthButton" destination="0bd-l3-MOj" id="FDs-vm-Kp1"/>
+                        <segue destination="B8X-lm-uTw" kind="presentation" identifier="fromTeamsToCountries" id="Sh0-Bl-jae"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mPZ-SL-R8H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4240.5" y="274.5"/>
+            <point key="canvasLocation" x="3526.5" y="274.5"/>
         </scene>
         <!--Initial View Controller-->
         <scene sceneID="0Vi-Qr-yPz">
@@ -580,6 +602,9 @@
                                         <variation key="widthClass=compact" ambiguous="YES">
                                             <rect key="frame" x="0.0" y="0.0" width="131" height="21"/>
                                         </variation>
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                            <rect key="frame" x="53" y="0.0" width="131" height="22"/>
+                                        </variation>
                                         <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
                                             <rect key="frame" x="0.0" y="0.0" width="131" height="21"/>
                                         </variation>
@@ -592,8 +617,8 @@
                                         <variation key="widthClass=compact" ambiguous="YES">
                                             <rect key="frame" x="131" y="0.0" width="236" height="21"/>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="1" y="21" width="236" height="21"/>
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                            <rect key="frame" x="1" y="22" width="236" height="21"/>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
                                             <rect key="frame" x="131" y="0.0" width="236" height="21"/>
@@ -775,7 +800,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="7iW-QW-JNi">
-                                <rect key="frame" x="60" y="134" width="162" height="30"/>
+                                <rect key="frame" x="60" y="134" width="161" height="30"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="02W-qY-bTb">
                                         <rect key="frame" x="0.0" y="0.0" width="56" height="30"/>
@@ -921,7 +946,7 @@
                                 </variation>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="9kD-T8-aEV">
-                                <rect key="frame" x="62" y="161" width="323" height="30"/>
+                                <rect key="frame" x="62" y="161" width="322" height="30"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tmj-hc-yfj">
                                         <rect key="frame" x="0.0" y="0.0" width="56" height="30"/>
@@ -934,7 +959,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hkb-Lq-2lf">
-                                        <rect key="frame" x="184" y="0.0" width="139" height="30"/>
+                                        <rect key="frame" x="183" y="0.0" width="139" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -1018,28 +1043,13 @@
             </objects>
             <point key="canvasLocation" x="885" y="1468.5"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="dO8-3S-cfO">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Uzn-lo-3A7" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xOV-0C-S4e">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="B8X-lm-uTw" kind="relationship" relationship="rootViewController" id="7pw-vH-PbG"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8de-8c-s8h" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2284.5" y="274.5"/>
-        </scene>
     </scenes>
     <resources>
         <image name="hearth" width="60" height="60"/>
         <image name="intro" width="333" height="166"/>
         <image name="selected_hearth" width="60" height="60"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="4mk-nM-PXS"/>
+    </inferredMetricsTieBreakers>
 </document>

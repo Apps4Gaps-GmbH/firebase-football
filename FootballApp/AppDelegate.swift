@@ -69,9 +69,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     internal func setRootViewController() {
         // Check if user logged in
         if NSUserDefaults.standardUserDefaults().boolForKey("loggedIn") {
-
-            setMainAsRootViewController()
-        } else {
+            
+            if let userId = NSUserDefaults.standardUserDefaults().stringForKey("uid") {
+                print("\(userId)")
+                let userRef = Firebase(url: "https://resplendent-torch-3135.firebaseio.com/users/\(userId)")
+                userRef.observeEventType(.Value, withBlock: { (snapshot) -> Void in
+                    print("\(snapshot.value)")
+                    let favouriteTeam = snapshot.value.objectForKey("favourite_team") as? String
+                    print("\(favouriteTeam)")
+                    if favouriteTeam != nil && favouriteTeam != "" {
+                        self.setTeamsAsRootViewController()
+                    }
+                    else {
+                        self.setMainAsRootViewController()
+                    }
+                
+                })
+            }
+            
+        }
+        else {
             setInitialAsRootViewController()
         }
     }
@@ -86,6 +103,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setMainAsRootViewController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let mainViewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController") as? ViewController {
+            window?.rootViewController = mainViewController
+        }
+    }
+    
+    func setTeamsAsRootViewController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let mainViewController = storyboard.instantiateViewControllerWithIdentifier("TeamsTableViewController") as? TeamsTableViewController {
             window?.rootViewController = mainViewController
         }
     }

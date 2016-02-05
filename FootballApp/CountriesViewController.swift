@@ -22,16 +22,6 @@ class CountriesViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        if selectedCountry != nil {
-            goToCountryTeams()
-        }
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-
     }
     
     @IBOutlet weak var germanyButton: CountryButton! {
@@ -56,12 +46,13 @@ class CountriesViewController: UIViewController {
     // MARK - Navigation
     
     @IBAction func goToCountryTeams(sender:CountryButton) {
-        selectedCountry = sender.coutryName
-        performSegueWithIdentifier("fromCountriesToTeams", sender: sender)
-    }
-    
-    func goToCountryTeams() {
-        performSegueWithIdentifier("fromCountriesToTeams", sender: self)
+        if ((AppDelegate.sharedDelegate().window?.rootViewController!.isKindOfClass(TeamsTableViewController)) != nil) {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        else {
+            selectedCountry = sender.coutryName
+            performSegueWithIdentifier("fromCountriesToTeams", sender: sender)
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
