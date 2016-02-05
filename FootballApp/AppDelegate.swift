@@ -71,6 +71,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if NSUserDefaults.standardUserDefaults().boolForKey("loggedIn") {
             
             if let userId = NSUserDefaults.standardUserDefaults().stringForKey("uid") {
+                
+                setLoadingAsRootViewController()
                 print("\(userId)")
                 let userRef = Firebase(url: "https://resplendent-torch-3135.firebaseio.com/users/\(userId)")
                 userRef.observeEventType(.Value, withBlock: { (snapshot) -> Void in
@@ -114,5 +116,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    func setLoadingAsRootViewController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loadingViewController = storyboard.instantiateViewControllerWithIdentifier("LoadingViewController")
+        window?.rootViewController = loadingViewController
+    }
 }
 

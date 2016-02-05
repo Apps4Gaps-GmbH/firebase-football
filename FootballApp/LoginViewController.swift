@@ -78,7 +78,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             let ref = Firebase(url: "https://resplendent-torch-3135.firebaseio.com/users")
             
             ref.authUser(emailTextField.text, password: passwordTextField.text, withCompletionBlock: { (error, authData) -> Void in
-                hud.hide(true)
                 
                 if error != nil {
                     let alert = UIAlertController(title: "Error", message: "Invalid credentials", preferredStyle: UIAlertControllerStyle.Alert)
@@ -89,7 +88,19 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     NSUserDefaults.standardUserDefaults().setBool(true, forKey: "loggedIn")
                     NSUserDefaults.standardUserDefaults().setObject(authData.uid, forKey: "uid")
                     
-                    AppDelegate.sharedDelegate().setMainAsRootViewController()
+                    let userRef = Firebase(url: "https://resplendent-torch-3135.firebaseio.com/users/\(authData.uid)")
+                    userRef.observeEventType(.Value, withBlock: { (snapshot) -> Void in
+                        hud.hide(true)
+                        print("\(snapshot.value)")
+                        let favouriteTeam = snapshot.value.objectForKey("favourite_team") as? String
+                        print("\(favouriteTeam)")
+                        if favouriteTeam != nil && favouriteTeam != "" {
+                            AppDelegate.sharedDelegate().setTeamsAsRootViewController()
+                        }
+                        else {
+                            AppDelegate.sharedDelegate().setMainAsRootViewController()
+                        }
+                    })
                 }
             })
         }

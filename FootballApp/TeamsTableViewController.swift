@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FBSDKLoginKit
 
 class TeamsTableViewController: UITableViewController {
     
@@ -89,4 +90,19 @@ class TeamsTableViewController: UITableViewController {
     }
     
 
+    @IBAction func logoutButtonTapped(sender: AnyObject) {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (alertAction) -> Void in }
+        let logoutAction = UIAlertAction(title: "Log out", style: .Destructive) { (alertAction) -> Void in
+            FBSDKLoginManager().logOut()
+            NSUserDefaults.standardUserDefaults().setBool(false, forKey: "loggedIn")
+            NSUserDefaults.standardUserDefaults().setValue(nil, forKey: "uid")
+            AppDelegate.sharedDelegate().setInitialAsRootViewController()
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(logoutAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+    }
 }
