@@ -89,16 +89,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     NSUserDefaults.standardUserDefaults().setBool(true, forKey: "loggedIn")
                     NSUserDefaults.standardUserDefaults().setObject(authData.uid, forKey: "uid")
                     
-                    let alert = UIAlertController(title: "Success", message: "Successful login", preferredStyle: UIAlertControllerStyle.Alert)
-                    let destroyAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Destructive, handler: { (action) -> Void in })
-                    alert.addAction(destroyAction)
-                    self.presentViewController(alert, animated: true, completion: nil)
-                    
-                    let userRef = Firebase(url: "https://resplendent-torch-3135.firebaseio.com/users/\(authData.uid)")
-                    
-                    userRef.observeEventType(.Value, withBlock: { (snapshot) -> Void in
-                        print(snapshot.value.objectForKey("favourite_team") as! String)
-                    })
+                    AppDelegate.sharedDelegate().setMainAsRootViewController()
                 }
             })
         }
