@@ -59,6 +59,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 .application(application, openURL: url,
                     sourceApplication: sourceApplication, annotation: annotation)
     }
+    
+    class func sharedDelegate() -> AppDelegate {
+        return UIApplication.sharedApplication().delegate as! AppDelegate
+    }
 
     internal func setRootViewController() {
         // Check if user logged in
