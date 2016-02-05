@@ -47,6 +47,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     } else {
                         print("Logged in! \(authData)")
                         
+                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "loggedIn")
+                        
                         let request = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email"])
                         request.startWithCompletionHandler({ (connection, result, error) -> Void in
                             if error != nil {
@@ -60,6 +62,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                                         print("user already exists")
                                         
                                         let userRef = Firebase(url: "https://resplendent-torch-3135.firebaseio.com/users/\(snapshot.key)")
+                                        NSUserDefaults.standardUserDefaults().setObject(snapshot.key, forKey: "uid")
                                         userRef.observeEventType(.Value, withBlock: { (snapshot) -> Void in
                                             let favouriteCountry = snapshot.value.objectForKey("favourite_team") as? String
                                             if favouriteCountry != nil && favouriteCountry != "" {
