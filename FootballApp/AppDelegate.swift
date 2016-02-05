@@ -11,6 +11,8 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import Firebase
 
+let firebaseUrl = "https://resplendent-torch-3135.firebaseio.com"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
