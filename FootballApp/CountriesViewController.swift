@@ -20,8 +20,18 @@ class CountriesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        
+        if selectedCountry != nil {
+            goToCountryTeams()
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+
     }
     
     @IBOutlet weak var germanyButton: CountryButton! {
@@ -47,7 +57,11 @@ class CountriesViewController: UIViewController {
     
     @IBAction func goToCountryTeams(sender:CountryButton) {
         selectedCountry = sender.coutryName
-        self.performSegueWithIdentifier("fromCountriesToTeams", sender: sender)
+        performSegueWithIdentifier("fromCountriesToTeams", sender: sender)
+    }
+    
+    func goToCountryTeams() {
+        performSegueWithIdentifier("fromCountriesToTeams", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
