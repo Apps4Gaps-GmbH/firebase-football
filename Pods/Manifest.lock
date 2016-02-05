@@ -1,5 +1,6 @@
 PODS:
   - Firebase (2.5.0)
+<<<<<<< Updated upstream
   - MBProgressHUD (0.9.2)
 
 DEPENDENCIES:
@@ -9,5 +10,13 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Firebase: 744617c0733b45198f9486ebd5cac64ec2d10d79
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+=======
+
+DEPENDENCIES:
+  - Firebase (>= 2.5.0)
+
+SPEC CHECKSUMS:
+  Firebase: 744617c0733b45198f9486ebd5cac64ec2d10d79
+>>>>>>> Stashed changes
 
 COCOAPODS: 0.39.0
