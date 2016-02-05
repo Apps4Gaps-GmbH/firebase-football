@@ -46,7 +46,7 @@ class CountriesViewController: UIViewController {
     // MARK - Navigation
     
     @IBAction func goToCountryTeams(sender:CountryButton) {
-        if ((AppDelegate.sharedDelegate().window?.rootViewController!.isKindOfClass(TeamsTableViewController)) != nil) {
+        if ((AppDelegate.sharedDelegate().window?.rootViewController!.isKindOfClass(TeamsTableViewController)) == true) {
             self.dismissViewControllerAnimated(true, completion: nil)
         }
         else {

@@ -72,7 +72,7 @@ class TeamsTableViewController: UITableViewController {
     }
     
     @IBAction func goToCountries(sender:UIButton) {
-        if ((AppDelegate.sharedDelegate().window?.rootViewController!.isKindOfClass(TeamsTableViewController)) != nil) {
+        if ((AppDelegate.sharedDelegate().window?.rootViewController!.isKindOfClass(TeamsTableViewController)) == true) {
             performSegueWithIdentifier("fromTeamsToCountries", sender: sender)
         }
 //        if let viewControllers = navigationController?.viewControllers {
