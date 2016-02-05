@@ -14,9 +14,14 @@ enum Country: String {
     case Turkey = "Turkey"
 }
 
+protocol CountriesDelegate {
+    func updateFavouriteCountry(favoutireCountry: Country)
+}
+
 class CountriesViewController: UIViewController {
 
     var selectedCountry: Country?
+    var countriesDelegate: CountriesDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,11 +51,14 @@ class CountriesViewController: UIViewController {
     // MARK - Navigation
     
     @IBAction func goToCountryTeams(sender:CountryButton) {
+        selectedCountry = sender.coutryName
         if ((AppDelegate.sharedDelegate().window?.rootViewController!.isKindOfClass(TeamsTableViewController)) == true) {
+            if self.countriesDelegate != nil && self.selectedCountry != nil {
+                self.countriesDelegate!.updateFavouriteCountry(self.selectedCountry!)
+            }
             self.dismissViewControllerAnimated(true, completion: nil)
         }
         else {
-            selectedCountry = sender.coutryName
             performSegueWithIdentifier("fromCountriesToTeams", sender: sender)
         }
     }
@@ -58,7 +66,9 @@ class CountriesViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "fromCountriesToTeams" {
             if selectedCountry != nil {
-                (segue.destinationViewController as? TeamsTableViewController)?.country = selectedCountry!.rawValue
+                if let teamsTableViewController = segue.destinationViewController as? TeamsTableViewController {
+                    teamsTableViewController.country = selectedCountry!.rawValue
+                }
             }
         }
     }

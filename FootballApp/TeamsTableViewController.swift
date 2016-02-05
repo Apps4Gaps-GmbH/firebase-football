@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FBSDKLoginKit
 
-class TeamsTableViewController: UITableViewController {
+class TeamsTableViewController: UITableViewController, CountriesDelegate {
     
     var teams: [[String:String]]?
     let firebaseUrl = "https://resplendent-torch-3135.firebaseio.com"
@@ -22,14 +22,18 @@ class TeamsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.tableHeaderView?.frame.size.height = 200
-        
-        print("\(firebaseUrl)/teams/\(country)")
+        updateTeamsCountry()
+    }
+    
+    func updateTeamsCountry() {
         let ref = Firebase(url:"\(firebaseUrl)/teams/\(country)")
         ref.observeEventType(.Value, withBlock: { snapshot in
             
             self.teams = snapshot.value as? [[String:String]]
             self.tableView.reloadData()
+            ref.removeAllObservers()
         })
+        
         
         if let userId = NSUserDefaults.standardUserDefaults().stringForKey("uid") {
             let userRef = Firebase(url: "\(firebaseUrl)/users/\(userId)")
@@ -38,9 +42,13 @@ class TeamsTableViewController: UITableViewController {
                 if favouriteTeam != nil && favouriteTeam == self.country {
                     self.hearthButton.selected = true
                 }
+                else {
+                    self.hearthButton.selected = false
+                }
+                userRef.removeAllObservers()
             })
+            
         }
-
     }
 
     
@@ -62,6 +70,11 @@ class TeamsTableViewController: UITableViewController {
         return cell
     }
     
+    func updateFavouriteCountry(favoutireCountry: Country) {
+        country = favoutireCountry.rawValue
+        updateTeamsCountry()
+    }
+    
     @IBAction func thisIsMyFavouriteCountry(sender: UIButton) {
         //let userId = "11de14fa-6133-4c76-8e20-1653ba227ab6"
         if let userId = NSUserDefaults.standardUserDefaults().stringForKey("uid") {
@@ -69,6 +82,7 @@ class TeamsTableViewController: UITableViewController {
             let nickname = ["favourite_team": sender.selected ? "" : country]
             ref.updateChildValues(nickname)
             sender.selected = !sender.selected
+            ref.removeAllObservers()
         }
     }
     
@@ -76,18 +90,19 @@ class TeamsTableViewController: UITableViewController {
         if ((AppDelegate.sharedDelegate().window?.rootViewController!.isKindOfClass(TeamsTableViewController)) == true) {
             performSegueWithIdentifier("fromTeamsToCountries", sender: sender)
         }
-//        if let viewControllers = navigationController?.viewControllers {
-//            for viewController in viewControllers {
-//                if viewController.isKindOfClass(TeamsTableViewController) {
-//                    print("1")
-//                    performSegueWithIdentifier("fromTeamsToCountries", sender: sender)
-//                }
-//            } 
-//        }
         else {
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "fromTeamsToCountries" {
+            if let countriesViewController = segue.destinationViewController as? CountriesViewController {
+                countriesViewController.countriesDelegate = self
+             }
+        }
+    }
+
     
 
     @IBAction func logoutButtonTapped(sender: AnyObject) {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -16,6 +16,7 @@
                         <viewControllerLayoutGuide type="bottom" id="MHz-Y3-JWO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5vW-VN-d1j">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="eKv-DC-Cys">
@@ -453,22 +454,22 @@
                                     <exclude reference="I6D-eI-hR4"/>
                                 </mask>
                                 <mask key="constraints">
+                                    <exclude reference="HxJ-zK-aiK"/>
+                                    <exclude reference="bn7-cF-SgD"/>
+                                    <exclude reference="swW-aQ-Cfl"/>
                                     <exclude reference="Hye-Ir-naG"/>
                                     <exclude reference="ZSN-WU-AHI"/>
+                                    <exclude reference="BEE-mU-SEc"/>
+                                    <exclude reference="beW-vG-x6b"/>
                                     <exclude reference="9R5-bb-TBK"/>
                                     <exclude reference="iS3-vF-YeM"/>
                                     <exclude reference="2AY-CI-AWf"/>
                                     <exclude reference="eME-at-Abj"/>
+                                    <exclude reference="SgK-8B-DuV"/>
+                                    <exclude reference="bXb-OE-dAi"/>
                                     <exclude reference="LPi-xy-npd"/>
                                     <exclude reference="mpp-lT-7w0"/>
                                     <exclude reference="qYa-1B-TML"/>
-                                    <exclude reference="SgK-8B-DuV"/>
-                                    <exclude reference="bXb-OE-dAi"/>
-                                    <exclude reference="BEE-mU-SEc"/>
-                                    <exclude reference="beW-vG-x6b"/>
-                                    <exclude reference="HxJ-zK-aiK"/>
-                                    <exclude reference="bn7-cF-SgD"/>
-                                    <exclude reference="swW-aQ-Cfl"/>
                                 </mask>
                             </variation>
                             <variation key="heightClass=regular-widthClass=compact">
@@ -482,22 +483,22 @@
                                     <include reference="I6D-eI-hR4"/>
                                 </mask>
                                 <mask key="constraints">
+                                    <include reference="HxJ-zK-aiK"/>
+                                    <include reference="bn7-cF-SgD"/>
+                                    <exclude reference="swW-aQ-Cfl"/>
                                     <include reference="Hye-Ir-naG"/>
                                     <include reference="ZSN-WU-AHI"/>
+                                    <include reference="BEE-mU-SEc"/>
+                                    <include reference="beW-vG-x6b"/>
                                     <include reference="9R5-bb-TBK"/>
                                     <include reference="iS3-vF-YeM"/>
                                     <include reference="2AY-CI-AWf"/>
                                     <include reference="eME-at-Abj"/>
+                                    <include reference="SgK-8B-DuV"/>
+                                    <include reference="bXb-OE-dAi"/>
                                     <include reference="LPi-xy-npd"/>
                                     <include reference="mpp-lT-7w0"/>
                                     <include reference="qYa-1B-TML"/>
-                                    <include reference="SgK-8B-DuV"/>
-                                    <include reference="bXb-OE-dAi"/>
-                                    <include reference="BEE-mU-SEc"/>
-                                    <include reference="beW-vG-x6b"/>
-                                    <include reference="HxJ-zK-aiK"/>
-                                    <include reference="bn7-cF-SgD"/>
-                                    <exclude reference="swW-aQ-Cfl"/>
                                 </mask>
                             </variation>
                         </view>
@@ -661,6 +662,9 @@
                                         <variation key="widthClass=compact" ambiguous="YES">
                                             <rect key="frame" x="0.0" y="0.0" width="131" height="21"/>
                                         </variation>
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                            <rect key="frame" x="53" y="0.0" width="131" height="22"/>
+                                        </variation>
                                         <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
                                             <rect key="frame" x="0.0" y="0.0" width="131" height="21"/>
                                         </variation>
@@ -673,8 +677,8 @@
                                         <variation key="widthClass=compact" ambiguous="YES">
                                             <rect key="frame" x="131" y="0.0" width="236" height="21"/>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="1" y="21" width="236" height="21"/>
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                            <rect key="frame" x="1" y="22" width="236" height="21"/>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
                                             <rect key="frame" x="131" y="0.0" width="236" height="21"/>
@@ -856,7 +860,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="7iW-QW-JNi">
-                                <rect key="frame" x="60" y="134" width="162" height="30"/>
+                                <rect key="frame" x="60" y="134" width="161" height="30"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="02W-qY-bTb">
                                         <rect key="frame" x="0.0" y="0.0" width="56" height="30"/>
@@ -1002,7 +1006,7 @@
                                 </variation>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="9kD-T8-aEV">
-                                <rect key="frame" x="62" y="161" width="323" height="30"/>
+                                <rect key="frame" x="62" y="161" width="322" height="30"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tmj-hc-yfj">
                                         <rect key="frame" x="0.0" y="0.0" width="56" height="30"/>
@@ -1015,7 +1019,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hkb-Lq-2lf">
-                                        <rect key="frame" x="184" y="0.0" width="139" height="30"/>
+                                        <rect key="frame" x="183" y="0.0" width="139" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>

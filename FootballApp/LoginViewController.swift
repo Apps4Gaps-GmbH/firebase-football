@@ -91,11 +91,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     let userRef = Firebase(url: "https://resplendent-torch-3135.firebaseio.com/users/\(authData.uid)")
                     userRef.observeEventType(.Value, withBlock: { (snapshot) -> Void in
                         hud.hide(true)
-                        print("\(snapshot.value)")
-                        let favouriteTeam = snapshot.value.objectForKey("favourite_team") as? String
-                        print("\(favouriteTeam)")
-                        if favouriteTeam != nil && favouriteTeam != "" {
-                            AppDelegate.sharedDelegate().setTeamsAsRootViewController()
+                        let favouriteCountry = snapshot.value.objectForKey("favourite_team") as? String
+                        if favouriteCountry != nil && favouriteCountry != "" {
+                            AppDelegate.sharedDelegate().setTeamsAsRootViewController(favouriteCountry!)
                         }
                         else {
                             AppDelegate.sharedDelegate().setMainAsRootViewController()

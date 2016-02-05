@@ -73,20 +73,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let userId = NSUserDefaults.standardUserDefaults().stringForKey("uid") {
                 
                 setLoadingAsRootViewController()
-                print("\(userId)")
                 let userRef = Firebase(url: "https://resplendent-torch-3135.firebaseio.com/users/\(userId)")
                 userRef.observeEventType(.Value, withBlock: { (snapshot) -> Void in
-                    print("\(snapshot.value)")
-                    let favouriteTeam = snapshot.value.objectForKey("favourite_team") as? String
-                    print("\(favouriteTeam)")
-                    if favouriteTeam != nil && favouriteTeam != "" {
-                        self.setTeamsAsRootViewController()
+                    let favouriteCountry = snapshot.value.objectForKey("favourite_team") as? String
+                    if favouriteCountry != nil && favouriteCountry != "" {
+                        self.setTeamsAsRootViewController(favouriteCountry!)
                     }
                     else {
                         self.setMainAsRootViewController()
                     }
-                
+                    userRef.removeAllObservers()
                 })
+                
             }
             
         }
@@ -109,9 +107,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func setTeamsAsRootViewController() {
+    func setTeamsAsRootViewController(favouriteCountry: String) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let mainViewController = storyboard.instantiateViewControllerWithIdentifier("TeamsTableViewController") as? TeamsTableViewController {
+            mainViewController.country = favouriteCountry
             window?.rootViewController = mainViewController
         }
     }
