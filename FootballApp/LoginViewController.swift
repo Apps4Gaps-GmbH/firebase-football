@@ -16,6 +16,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    let ref = Firebase(url: firebaseUrl)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,7 +46,17 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                         print("Login failed. \(error)")
                     } else {
                         print("Logged in! \(authData)")
-                        AppDelegate.sharedDelegate().setMainAsRootViewController()
+                        
+                        let request = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email"])
+                        request.startWithCompletionHandler({ (connection, result, error) -> Void in
+                            if error != nil {
+                                print("Graph request failed. \(error)")
+                            } else {
+                                self.showPassAlert(result.valueForKey("email") as! String, completion: { () -> Void in
+                                    AppDelegate.sharedDelegate().setMainAsRootViewController()
+                                })
+                            }
+                        })
                     }
             })
         }
@@ -74,7 +86,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     alert.addAction(destroyAction)
                     self.presentViewController(alert, animated: true, completion: nil)
                 } else {
-//                    NSUserDefaults.standardUserDefaults().setBool(true, forKey: "loggedIn")
+                    NSUserDefaults.standardUserDefaults().setBool(true, forKey: "loggedIn")
                     NSUserDefaults.standardUserDefaults().setObject(authData.uid, forKey: "uid")
                     
                     let alert = UIAlertController(title: "Success", message: "Successful login", preferredStyle: UIAlertControllerStyle.Alert)
@@ -85,17 +97,55 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     let userRef = Firebase(url: "https://resplendent-torch-3135.firebaseio.com/users/\(authData.uid)")
                     
                     userRef.observeEventType(.Value, withBlock: { (snapshot) -> Void in
-//                        if snapshot.value.objectForKey("favourite_team") as! String != "" {
-//                            // to team list
-//                        } else {
-//                            // to team selection
-//                        }
-                        
                         print(snapshot.value.objectForKey("favourite_team") as! String)
                     })
                 }
             })
         }
+    }
+    
+    func showPassAlert(email: String, completion: () -> Void) {
+        let alert = UIAlertController(title: "Register",
+            message: "Enter your password",
+            preferredStyle: .Alert)
+        
+        let saveAction = UIAlertAction(title: "Save", style: .Default) { [unowned self] _ in
+            let passwordField = alert.textFields![0]
+            guard passwordField.text?.isEmpty == false else { return }
+            
+            let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            hud.mode = .Indeterminate
+            hud.labelText = "Loading"
+            
+            self.ref.createUser(email, password: passwordField.text, withCompletionBlock: { error in
+                if error == nil {
+                    self.ref.authUser(email, password: passwordField.text, withCompletionBlock: { (error, authData) -> Void in
+                        let user = User(email: authData.providerData["email"] as! String, favouriteCountry: "")
+                        let usersRef = self.ref.childByAppendingPath("users/\(authData.uid)")
+                        usersRef.setValue(user.toAnyObject())
+                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "loggedIn")
+                        NSUserDefaults.standardUserDefaults().setObject(authData.uid, forKey: "uid")
+                        
+                        hud.hide(true)
+                        completion()
+                    })
+                }
+            })
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel",
+            style: .Cancel) { (action: UIAlertAction!) -> Void in
+        }
+        
+        alert.addTextFieldWithConfigurationHandler {
+            (textPassword) -> Void in
+            textPassword.secureTextEntry = true
+        }
+        
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        
+        presentViewController(alert, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
