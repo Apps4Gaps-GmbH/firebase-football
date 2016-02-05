@@ -52,8 +52,28 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                             if error != nil {
                                 print("Graph request failed. \(error)")
                             } else {
-                                self.showPassAlert(result.valueForKey("email") as! String, completion: { () -> Void in
-                                    AppDelegate.sharedDelegate().setMainAsRootViewController()
+                                
+                                let userRef = Firebase(url: "https://resplendent-torch-3135.firebaseio.com/users")
+                                userRef.observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
+//                                    print(snapshot.value)
+                                    if let email = snapshot.value["email"] as? String where email == result["email"] as! String {
+                                        print("user already exists")
+                                        
+                                        let userRef = Firebase(url: "https://resplendent-torch-3135.firebaseio.com/users/\(snapshot.key)")
+                                        userRef.observeEventType(.Value, withBlock: { (snapshot) -> Void in
+                                            let favouriteTeam = snapshot.value.objectForKey("favourite_team") as? String
+                                            if favouriteTeam != nil && favouriteTeam != "" {
+                                                AppDelegate.sharedDelegate().setTeamsAsRootViewController()
+                                            }
+                                            else {
+                                                AppDelegate.sharedDelegate().setMainAsRootViewController()
+                                            }
+                                        })
+                                    } else {
+                                        self.showPassAlert(result.valueForKey("email") as! String, completion: { () -> Void in
+                                            AppDelegate.sharedDelegate().setMainAsRootViewController()
+                                        })
+                                    }
                                 })
                             }
                         })
